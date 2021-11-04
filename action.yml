@@ -1,0 +1,59 @@
+name: Open Journal Paper
+description: Compile and generate Paper metadata
+inputs:
+  issue_id:
+    description: The review issue id for the paper
+    required: true
+  repository_url:
+    description: The repository URL of the submission containing the paper file
+    required: true
+  branch:
+    description: Git branch where the paper is located
+    required: false
+    default: ""
+  journal:
+    description: The journal template to use for the paper. Default is 'joss'.
+    required: false
+    default: joss
+outputs:
+  pdf_path:
+    description: "Path to the generated PDF file"
+    value: ${{ steps.compilation-result.outputs.paper_pdf_path }}
+  jats_path:
+    description: "Path to the generated JATS file"
+    value: ${{ steps.compilation-result.outputs.paper_jats_path }}
+  paper_file_path:
+    description: "Path to the paper's .md/.tex source file"
+    value: ${{ steps.paper-finder.outputs.paper_file_path }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+    - name: Find paper file
+      id: paper-finder
+      shell: bash
+      env:
+        ISSUE_ID: ${{ inputs.issue_id }}
+        REPO_URL: ${{ inputs.repository_url }}
+        PAPER_BRANCH: ${{ inputs.branch }}
+        JOURNAL_ALIAS: ${{ inputs.journal }}
+      run: |
+        ruby ${{ github.action_path }}/get_paper.rb
+    - name: Build paper files
+      id: build-paper
+      uses: openjournals/inara@master
+      with:
+        journal: ${{ inputs.journal }}
+        paper-path: ${{ steps.paper-finder.outputs.paper_file_path }}
+    - name: Check results
+      id: compilation-result
+      shell: bash
+      run: |
+        ruby ${{ github.action_path }}/check_result.rb ${{ steps.paper-finder.outputs.paper_file_path }}
+
+branding:
+  icon: file-text
+  color: blue
