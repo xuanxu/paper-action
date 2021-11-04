@@ -7,7 +7,7 @@ journal_alias = ENV['JOURNAL_ALIAS']
 
 journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
 issue = Theoj::ReviewIssue.new(journal.data[:reviews_repository], issue_id)
-issue.paper = Paper.from_repo(repo_url, repo_branch)
+issue.paper = Theoj::Paper.from_repo(repo_url, repo_branch)
 submission = Theoj::Submission.new(journal, issue, issue.paper)
 
 paper_path = issue.paper.paper_path
