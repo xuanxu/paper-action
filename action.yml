@@ -44,7 +44,7 @@ runs:
         ruby ${{ github.action_path }}/get_paper.rb
     - name: Build paper files
       id: build-paper
-      uses: openjournals/inara@master
+      uses: xuanxu/publishing-artifacts-action@main
       with:
         journal: ${{ inputs.journal }}
         paper-path: ${{ steps.paper-finder.outputs.paper_file_path }}
