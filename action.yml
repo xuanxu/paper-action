@@ -32,6 +32,10 @@ runs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0.2
+        bundler-cache: true
+        cache-version: deposit-with-oj
+        bundler: Gemfile.lock
+        working-directory: ${{ github.action_path }}
     - name: Find paper file
       id: paper-finder
       shell: bash
@@ -40,9 +44,10 @@ runs:
         REPO_URL: ${{ inputs.repository_url }}
         PAPER_BRANCH: ${{ inputs.branch }}
         JOURNAL_ALIAS: ${{ inputs.journal }}
+        BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
-        ruby ${{ github.action_path }}/get_paper.rb
-    - name: Build paper files
+        bundle exec ruby ${{ github.action_path }}/get_paper.rb
+    - name: Build paper artifacts
       id: build-paper
       uses: xuanxu/publishing-artifacts-action@main
       with:
