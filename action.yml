@@ -33,7 +33,7 @@ runs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
-        cache-version: deposit-with-oj
+        cache-version: paper-files
         bundler: Gemfile.lock
         working-directory: ${{ github.action_path }}
     - name: Find paper file
