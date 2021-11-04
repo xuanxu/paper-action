@@ -1,0 +1,58 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    charlock_holmes (0.7.7)
+    escape_utils (1.2.1)
+    faraday (1.8.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0.1)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.1)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    github-linguist (7.17.0)
+      charlock_holmes (~> 0.7.7)
+      escape_utils (~> 1.2.0)
+      mini_mime (~> 1.0)
+      rugged (>= 0.25.1)
+    mini_mime (1.1.2)
+    multipart-post (2.1.1)
+    octokit (4.21.0)
+      faraday (>= 0.9)
+      sawyer (~> 0.8.0, >= 0.5.3)
+    openjournals-nameable (1.1.7)
+    public_suffix (4.0.6)
+    ruby2_keywords (0.0.5)
+    rugged (1.2.0)
+    sawyer (0.8.2)
+      addressable (>= 2.3.5)
+      faraday (> 0.8, < 2.0)
+    theoj (1.1.0)
+      faraday
+      github-linguist
+      octokit (~> 4.21)
+      openjournals-nameable
+      rugged
+
+PLATFORMS
+  x86_64-darwin-19
+
+DEPENDENCIES
+  theoj
+
+BUNDLED WITH
+   2.2.27
