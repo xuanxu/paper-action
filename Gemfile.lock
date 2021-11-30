@@ -41,7 +41,7 @@ GEM
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
-    theoj (1.2.0)
+    theoj (1.2.1)
       faraday
       github-linguist
       octokit (~> 4.21)
