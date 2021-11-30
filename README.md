@@ -15,7 +15,8 @@ The action accepts the following inputs:
 - **issue_id**: Required. The review issue id of the submission for the paper.
 - **repository_url**: Required. The repository URL of the submission containing the paper file.
 - **branch**: Optional. Git branch where the paper is located.
-- **journal**: Optional. The journal template to use for the paper. Default value is `joss`.
+- **journal**: Optional. The journal data to use for the paper. Default value is `joss`.
+- **journal_template**: Optional. The journal template to compile the paper with. Default value is `joss`.
 
 ### Outputs
 
