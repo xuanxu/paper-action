@@ -12,7 +12,11 @@ inputs:
     required: false
     default: ""
   journal:
-    description: The journal template to use for the paper. Default is 'joss'.
+    description: The journal data to use for the paper. Default is 'joss'.
+    required: false
+    default: joss
+  journal_template:
+    description: The journal template to compile the paper with. Default is 'joss'.
     required: false
     default: joss
 outputs:
@@ -51,7 +55,7 @@ runs:
       id: build-paper
       uses: xuanxu/publishing-artifacts-action@main
       with:
-        journal: ${{ inputs.journal }}
+        journal: ${{ inputs.journal_template }}
         paper-path: ${{ steps.paper-finder.outputs.paper_file_path }}
         args: -m ${{steps.paper-finder.outputs.paper_metadata_file_path}}
     - name: Check results
