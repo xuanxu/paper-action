@@ -17,6 +17,7 @@ The action accepts the following inputs:
 - **branch**: Optional. Git branch where the paper is located.
 - **journal**: Optional. The journal data to use for the paper. Default value is `joss`.
 - **journal_template**: Optional. The journal template to compile the paper with. Default value is `joss`.
+- **compile_mode**: Optional. Compile a draft PDF or a final accepted paper. Posible values are 'draft' (default) or 'accepted'.
 
 ### Outputs
 

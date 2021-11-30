@@ -4,7 +4,8 @@ require "yaml"
 issue_id = ENV["ISSUE_ID"]
 repo_url = ENV["REPO_URL"]
 repo_branch = ENV["PAPER_BRANCH"]
-journal_alias = ENV['JOURNAL_ALIAS']
+journal_alias = ENV["JOURNAL_ALIAS"]
+acceptance = ENV["COMPILE_MODE"] == "accepted"
 
 journal = Theoj::Journal.new(Theoj::JOURNALS_DATA[journal_alias.to_sym])
 issue = Theoj::ReviewIssue.new(journal.data[:reviews_repository], issue_id)
@@ -20,6 +21,10 @@ else
 end
 
 metadata = submission.article_metadata
+if acceptance && metadata[:published_at].to_s.strip.empty?
+  metadata[:published_at] = Time.now.strftime("%Y-%m-%d")
+end
+
 metadata[:editor].transform_keys!(&:to_s)
 metadata[:authors].each {|author| author.transform_keys!(&:to_s) }
 metadata.transform_keys!(&:to_s)

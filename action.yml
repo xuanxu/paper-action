@@ -19,6 +19,10 @@ inputs:
     description: The journal template to compile the paper with. Default is 'joss'.
     required: false
     default: joss
+  compile_mode:
+    description: Compile a draft PDF or a final accepted paper. Posible values are 'draft' or 'accepted'.
+    required: false
+    default: draft
 outputs:
   pdf_path:
     description: "Path to the generated PDF file"
@@ -48,6 +52,7 @@ runs:
         REPO_URL: ${{ inputs.repository_url }}
         PAPER_BRANCH: ${{ inputs.branch }}
         JOURNAL_ALIAS: ${{ inputs.journal }}
+        COMPILE_MODE: ${{ inputs.compile_mode }}
         BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
         bundle exec ruby ${{ github.action_path }}/get_paper.rb
