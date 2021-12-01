@@ -25,6 +25,9 @@ if acceptance && metadata[:published_at].to_s.strip.empty?
   metadata[:published_at] = Time.now.strftime("%Y-%m-%d")
 end
 
+metadata[:submitted_at] = "0000-00-00" if metadata[:submitted_at].to_s.strip.empty?
+metadata[:published_at] = "0000-00-00" if metadata[:published_at].to_s.strip.empty?
+
 metadata[:editor].transform_keys!(&:to_s)
 metadata[:authors].each {|author| author.transform_keys!(&:to_s) }
 metadata.transform_keys!(&:to_s)
