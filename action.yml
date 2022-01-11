@@ -30,6 +30,9 @@ outputs:
   jats_path:
     description: "Path to the generated JATS file"
     value: ${{ steps.compilation-result.outputs.paper_jats_path }}
+  crossref_path:
+    description: "Path to the generated Crossref XML file"
+    value: ${{ steps.compilation-result.outputs.paper_jats_path }}
   paper_file_path:
     description: "Path to the paper's .md/.tex source file"
     value: ${{ steps.paper-finder.outputs.paper_file_path }}
@@ -67,7 +70,7 @@ runs:
       id: compilation-result
       shell: bash
       run: |
-        ruby ${{ github.action_path }}/check_result.rb ${{ steps.paper-finder.outputs.paper_file_path }}
+        ruby ${{ github.action_path }}/check_result.rb ${{ steps.paper-finder.outputs.paper_file_path }} pdf,crossref,jats
 
 branding:
   icon: file-text

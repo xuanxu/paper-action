@@ -1,8 +1,8 @@
 # Open Journals :: Paper
 
-This action looks for a `paper.md` file in the specified repository and uses it to compile a Open Journals paper, generating PDF and JATS outputs.
+This action looks for a `paper.md` file in the specified repository and uses it to compile a Open Journals paper, generating PDF, Crossref XML and JATS outputs.
 
-Under the hood it uses the [openjournals/inara action](https://github.com/tarleb/inara) to generate the output files.
+Under the hood it uses the [openjournals/inara action](https://github.com/openjournals/inara) to generate the output files.
 
 ## Usage
 
@@ -23,6 +23,7 @@ The action accepts the following inputs:
 
 - **pdf_path**: The path to the generated PDF file
 - **jats_path**: The path to the generated JATS file
+- **crossref_path**: The path to the generated Crossref XML file
 - **paper_file_path**: Path to the paper's .md/.tex source file
 
 ### Example
