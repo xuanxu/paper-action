@@ -70,7 +70,7 @@ runs:
       id: compilation-result
       shell: bash
       run: |
-        ruby ${{ github.action_path }}/check_result.rb ${{ steps.paper-finder.outputs.paper_file_path }} pdf,crossref,jats
+        ruby ${{ github.action_path }}/check_result.rb ${{ steps.paper-finder.outputs.paper_file_path }} pdf,jats
 
 branding:
   icon: file-text
