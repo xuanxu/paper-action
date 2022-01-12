@@ -65,7 +65,7 @@ runs:
       with:
         journal: ${{ inputs.journal_template }}
         paper-path: ${{ steps.paper-finder.outputs.paper_file_path }}
-        args: -m ${{steps.paper-finder.outputs.paper_metadata_file_path}}
+        args: ${{steps.paper-finder.outputs.inara_args}}
     - name: Check results
       id: compilation-result
       shell: bash

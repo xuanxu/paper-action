@@ -43,3 +43,8 @@ if File.exist?(metadata_file_path)
 else
   raise "   !! ERROR: Paper metadata file could not be generated"
 end
+
+inara_args = "-m #{metadata_file_path}"
+inara_args += " -p" if acceptance
+
+system("echo '::set-output name=inara_args::#{inara_args}'")
