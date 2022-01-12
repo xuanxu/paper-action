@@ -12,7 +12,7 @@ else
     raise "   !! ERROR: Failed to generate PDF file" if formats.include?("pdf")
   end
 
-  paper_crossref_path = File.dirname(paper_md_path)+"/paper.crossref.xml"
+  paper_crossref_path = File.dirname(paper_md_path)+"/paper.crossref"
   if File.exist?(paper_crossref_path)
     system("echo '::set-output name=paper_crossref_path::#{paper_crossref_path}'")
     system("echo 'Success! Crossref XML file generated at: #{paper_crossref_path}'")
