@@ -36,6 +36,9 @@ outputs:
   paper_file_path:
     description: "Path to the paper's .md/.tex source file"
     value: ${{ steps.paper-finder.outputs.paper_file_path }}
+  paper_title:
+    description: "Title of the paper"
+    value: ${{ steps.paper-finder.outputs.paper_title }}
 runs:
   using: "composite"
   steps:

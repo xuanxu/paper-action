@@ -40,6 +40,7 @@ end
 
 if File.exist?(metadata_file_path)
   system("echo '::set-output name=paper_metadata_file_path::#{metadata_file_path}'")
+  system("echo '::set-output name=paper_title::#{metadata[:title]}'")
 else
   raise "   !! ERROR: Paper metadata file could not be generated"
 end

@@ -25,6 +25,7 @@ The action accepts the following inputs:
 - **jats_path**: The path to the generated JATS file
 - **crossref_path**: The path to the generated Crossref XML file
 - **paper_file_path**: Path to the paper's .md/.tex source file
+- **paper_title**: The title of the paper
 
 ### Example
 
