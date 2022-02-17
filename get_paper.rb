@@ -15,6 +15,7 @@ submission = Theoj::Submission.new(journal, issue, issue.paper)
 paper_path = issue.paper.paper_path
 
 if paper_path.nil?
+  system("echo 'CUSTOM_ERROR=Paper file not found.' >> $GITHUB_ENV")
   raise "   !! ERROR: Paper file not found"
 else
   system("echo '::set-output name=paper_file_path::#{paper_path}'")
@@ -42,6 +43,7 @@ if File.exist?(metadata_file_path)
   system("echo '::set-output name=paper_metadata_file_path::#{metadata_file_path}'")
   system("echo '::set-output name=paper_title::#{metadata[:title]}'")
 else
+  system("echo 'CUSTOM_ERROR=Paper metadata file could not be generated.' >> $GITHUB_ENV")
   raise "   !! ERROR: Paper metadata file could not be generated"
 end
 
