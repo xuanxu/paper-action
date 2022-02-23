@@ -41,7 +41,9 @@ end
 
 if File.exist?(metadata_file_path)
   system("echo '::set-output name=paper_title::#{metadata[:title]}'")
-  system("echo 'Metadata created for paper: #{metadata[:title]}'")
+  system("echo 'Metadata created'")
+  system("echo '#{pp metadata}'")
+  system("echo '********'")
 else
   system("echo 'CUSTOM_ERROR=Paper metadata file could not be generated.' >> $GITHUB_ENV")
   raise "   !! ERROR: Paper metadata file could not be generated"
