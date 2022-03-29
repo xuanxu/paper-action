@@ -58,7 +58,9 @@ rescue JSON::ParserError
 end
 
 # If warnings found post them to the GitHub issue
-unless warning_msgs.empty?
+if warning_msgs.empty?
+  system("echo 'Paper and metadata files generated succesfully: 0 warnings'")
+else
   warning_msg = <<~PAPERWARNINGS
     The paper's PDF and metadata files generation produced some warnings that could prevent the final paper to be published. Please fix them before the end of the review process:
 
