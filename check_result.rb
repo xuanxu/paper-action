@@ -1,6 +1,9 @@
+require 'json'
+
 paper_md_path = ARGV[0].to_s
 formats = ARGV[1].to_s.downcase.split(",")
 
+# Check for generated files presence
 if paper_md_path.empty?
   raise "   !! ERROR: The paper path is empty"
 else
@@ -29,3 +32,45 @@ else
   end
 end
 
+
+# Check for warnings presence
+pdf_log_path = paper_pdf_path + ".log"
+crossref_log_path = paper_crossref_path + ".log"
+jats_log_path = paper_jats_path + ".log"
+
+warning_msgs = []
+
+log_files_paths = []
+log_files_paths << pdf_log_path if formats.include?("pdf")
+log_files_paths << crossref_log_path if formats.include?("crossref")
+log_files_paths << jats_log_path if formats.include?("jats")
+
+begin
+  log_files_paths.each do |log_file_path|
+    if warning_msgs.empty? && File.exist?(log_file_path)
+      logs = JSON.load_file(log_file_path)
+      warnings = logs.select { |entry| entry["verbosity"].to_s.upcase == "WARNING" }
+      warning_msgs = warnings.map {|w| w["message"]}.compact
+    end
+  end
+rescue JSON::ParserError
+  system("echo 'Error parsing file #{log_file_path}'")
+end
+
+# If warnings found post them to the GitHub issue
+if warning_msgs.empty?
+  system("echo 'Paper and metadata files generated successfully: 0 warnings'")
+else
+  warning_msg = <<~PAPERWARNINGS
+    The paper's PDF and metadata files generation produced some warnings that could prevent the final paper to be published. Please fix them before the end of the review process:
+
+    ```
+    #{warning_msgs.join("\n```\n\n```\n")}
+    ```
+  PAPERWARNINGS
+
+  File.open('oj_warnings.txt', 'w') do |f|
+    f.write warning_msg
+  end
+  system("gh issue comment #{ENV['ISSUE_ID']} --body-file oj_warnings.txt")
+end
