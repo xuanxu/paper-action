@@ -52,3 +52,7 @@ inara_args = "-m #{metadata_file_path} -l -o pdf,crossref,jats"
 inara_args += " -p" if acceptance
 
 system("echo '::set-output name=inara_args::#{inara_args}'")
+
+track = submission.track
+track_name = track[:parameterized] || journal_alias
+system("echo '::set-output name=track_name::#{track_name}'")

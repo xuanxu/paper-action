@@ -39,6 +39,9 @@ outputs:
   paper_title:
     description: "Title of the paper"
     value: ${{ steps.paper-finder.outputs.paper_title }}
+  track_name:
+    description: "Parameterized name of the paper's track"
+    value: ${{ steps.paper-finder.outputs.track_name }}
 runs:
   using: "composite"
   steps:
