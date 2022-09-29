@@ -26,6 +26,7 @@ The action accepts the following inputs:
 - **crossref_path**: The path to the generated Crossref XML file
 - **paper_file_path**: Path to the paper's .md/.tex source file
 - **paper_title**: The title of the paper
+- **track_name**: Parameterized name of the paper's track
 
 ### Example
 
