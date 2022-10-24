@@ -18,7 +18,7 @@ if paper_path.nil?
   system("echo 'CUSTOM_ERROR=Paper file not found.' >> $GITHUB_ENV")
   raise "   !! ERROR: Paper file not found"
 else
-  system("echo '::set-output name=paper_file_path::#{paper_path}'")
+  system("echo 'paper_file_path=#{paper_path}' >> $GITHUB_OUTPUT")
 end
 
 metadata = submission.article_metadata
@@ -41,7 +41,7 @@ end
 
 if File.exist?(metadata_file_path)
   title = metadata["title"]
-  system("echo '::set-output name=paper_title::#{title}'")
+  system("echo 'paper_title=#{title}' >> $GITHUB_OUTPUT")
   system("echo 'Metadata created for paper: #{title}'")
 else
   system("echo 'CUSTOM_ERROR=Paper metadata file could not be generated.' >> $GITHUB_ENV")
@@ -51,8 +51,8 @@ end
 inara_args = "-m #{metadata_file_path} -l -o pdf,crossref,jats"
 inara_args += " -p" if acceptance
 
-system("echo '::set-output name=inara_args::#{inara_args}'")
+system("echo 'inara_args=#{inara_args}' >> $GITHUB_OUTPUT")
 
 track = submission.track
 track_name = track[:parameterized] || journal_alias
-system("echo '::set-output name=track_name::#{track_name}'")
+system("echo 'track_name=#{track_name}' >> $GITHUB_OUTPUT")

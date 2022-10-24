@@ -6,7 +6,7 @@ if paper_md_path.empty?
 else
   paper_pdf_path = File.dirname(paper_md_path)+"/paper.pdf"
   if File.exist?(paper_pdf_path)
-    system("echo '::set-output name=paper_pdf_path::#{paper_pdf_path}'")
+    system("echo 'paper_pdf_path=#{paper_pdf_path}' >> $GITHUB_OUTPUT")
     system("echo 'Success! PDF file generated at: #{paper_pdf_path}'")
   else
     raise "   !! ERROR: Failed to generate PDF file" if formats.include?("pdf")
@@ -14,7 +14,7 @@ else
 
   paper_crossref_path = File.dirname(paper_md_path)+"/paper.crossref"
   if File.exist?(paper_crossref_path)
-    system("echo '::set-output name=paper_crossref_path::#{paper_crossref_path}'")
+    system("echo 'paper_crossref_path=#{paper_crossref_path}' >> $GITHUB_OUTPUT")
     system("echo 'Success! Crossref XML file generated at: #{paper_crossref_path}'")
   else
     raise "   !! ERROR: Failed to generate Crossref XML file" if formats.include?("crossref")
@@ -22,7 +22,7 @@ else
 
   paper_jats_path = File.dirname(paper_md_path)+"/paper.jats"
   if File.exist?(paper_jats_path)
-    system("echo '::set-output name=paper_jats_path::#{paper_jats_path}'")
+    system("echo 'paper_jats_path=#{paper_jats_path}' >> $GITHUB_OUTPUT")
     system("echo 'Success! JATS file generated at: #{paper_jats_path}'")
   else
     raise "   !! ERROR: Failed to generate JATS file" if formats.include?("jats")
