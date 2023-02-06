@@ -62,8 +62,7 @@ if warning_msgs.empty?
   system("echo 'Paper and metadata files generated successfully: 0 warnings'")
 else
   warning_msg = <<~PAPERWARNINGS
-    The paper's PDF and metadata files generation produced some warnings that could prevent the final paper to be published. Please fix them before the end of the review process:
-
+    The paper's PDF and metadata files generation produced some warnings that could prevent the final paper from being published. Please fix them before the end of the review process.
     ```
     #{warning_msgs.join("\n```\n\n```\n")}
     ```
