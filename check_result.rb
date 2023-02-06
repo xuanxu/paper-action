@@ -41,7 +41,7 @@ jats_log_path = paper_jats_path + ".log"
 warning_msgs = []
 
 log_files_paths = []
-log_files_paths << pdf_log_path if formats.include?("pdf")
+#log_files_paths << pdf_log_path if formats.include?("pdf")
 log_files_paths << crossref_log_path if formats.include?("crossref")
 log_files_paths << jats_log_path if formats.include?("jats")
 
