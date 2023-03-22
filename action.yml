@@ -33,6 +33,9 @@ outputs:
   crossref_path:
     description: "Path to the generated Crossref XML file"
     value: ${{ steps.compilation-result.outputs.paper_crossref_path }}
+  citation_file_path:
+    description: "Path to the generated CITATION.cff file"
+    value: ${{ steps.compilation-result.outputs.citation_file_path }}
   paper_file_path:
     description: "Path to the paper's .md/.tex source file"
     value: ${{ steps.paper-finder.outputs.paper_file_path }}

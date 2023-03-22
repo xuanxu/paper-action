@@ -49,7 +49,7 @@ else
 end
 
 inara_args = "-m #{metadata_file_path} -l -o pdf,crossref,jats"
-inara_args += " -p" if acceptance
+inara_args += ",cff -p" if acceptance
 
 system("echo 'inara_args=#{inara_args}' >> $GITHUB_OUTPUT")
 

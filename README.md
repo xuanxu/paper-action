@@ -24,6 +24,7 @@ The action accepts the following inputs:
 - **pdf_path**: The path to the generated PDF file
 - **jats_path**: The path to the generated JATS file
 - **crossref_path**: The path to the generated Crossref XML file
+- **citation_file_path**: The path to the generated CITATION.cff file (generated when compilation mode is 'accepted')
 - **paper_file_path**: Path to the paper's .md/.tex source file
 - **paper_title**: The title of the paper
 - **track_name**: Parameterized name of the paper's track

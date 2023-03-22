@@ -30,6 +30,12 @@ else
   else
     raise "   !! ERROR: Failed to generate JATS file" if formats.include?("jats")
   end
+
+  citation_file_path = File.dirname(paper_md_path)+"/CITATION.cff"
+  if File.exist?(citation_file_path)
+    system("echo 'citation_file_path=#{citation_file_path}' >> $GITHUB_OUTPUT")
+    system("echo 'Success! CITATION.cff file generated at: #{citation_file_path}'")
+  end
 end
 
 
