@@ -51,7 +51,7 @@ runs:
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2.1
+        ruby-version: 3.2.2
         bundler-cache: true
         cache-version: paper-files
         bundler: Gemfile.lock
