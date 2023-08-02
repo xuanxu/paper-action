@@ -64,18 +64,18 @@ rescue JSON::ParserError
 end
 
 # If warnings found post them to the GitHub issue
-if warning_msgs.empty?
-  system("echo 'Paper and metadata files generated successfully: 0 warnings'")
-else
-  warning_msg = <<~PAPERWARNINGS
-    The paper's PDF and metadata files generation produced some warnings that could prevent the final paper from being published. Please fix them before the end of the review process.
-    ```
-    #{warning_msgs.join("\n```\n\n```\n")}
-    ```
-  PAPERWARNINGS
+# if warning_msgs.empty?
+#   system("echo 'Paper and metadata files generated successfully: 0 warnings'")
+# else
+#   warning_msg = <<~PAPERWARNINGS
+#     The paper's PDF and metadata files generation produced some warnings that could prevent the final paper from being published. Please fix them before the end of the review process.
+#     ```
+#     #{warning_msgs.join("\n```\n\n```\n")}
+#     ```
+#   PAPERWARNINGS
 
-  File.open('oj_warnings.txt', 'w') do |f|
-    f.write warning_msg
-  end
-  system("gh issue comment #{ENV['ISSUE_ID']} --body-file oj_warnings.txt")
-end
+#   File.open('oj_warnings.txt', 'w') do |f|
+#     f.write warning_msg
+#   end
+#   system("gh issue comment #{ENV['ISSUE_ID']} --body-file oj_warnings.txt")
+# end
