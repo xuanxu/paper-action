@@ -21,7 +21,13 @@ else
   system("echo 'paper_file_path=#{paper_path}' >> $GITHUB_OUTPUT")
 end
 
-metadata = submission.article_metadata
+begin
+  metadata = submission.article_metadata
+rescue Theoj::Error => e
+  system("echo 'CUSTOM_ERROR=#{e.message}.' >> $GITHUB_ENV")
+  raise "   !! ERROR: Invalid submission metadata"
+end
+
 if acceptance && metadata[:published_at].to_s.strip.empty?
   metadata[:published_at] = Time.now.strftime("%Y-%m-%d")
 end
