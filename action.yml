@@ -20,7 +20,7 @@ inputs:
     required: false
     default: joss
   compile_mode:
-    description: Compile a draft PDF or a final accepted paper. Posible values are 'draft' or 'accepted'.
+    description: Compile a draft PDF or a final accepted paper. Possible values are 'draft' or 'accepted'.
     required: false
     default: draft
 outputs:
