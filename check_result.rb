@@ -23,7 +23,7 @@ else
     raise "   !! ERROR: Failed to generate Crossref XML file" if formats.include?("crossref")
   end
 
-  paper_jats_path = File.dirname(paper_md_path)+"/paper.jats"
+  paper_jats_path = File.dirname(paper_md_path)+"/paper.jats/paper.jats"
   if File.exist?(paper_jats_path)
     system("echo 'paper_jats_path=#{paper_jats_path}' >> $GITHUB_OUTPUT")
     system("echo 'Success! JATS file generated at: #{paper_jats_path}'")
