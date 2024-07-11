@@ -42,7 +42,7 @@ metadata.transform_keys!(&:to_s)
 metadata_file_path = File.dirname(paper_path)+"/paper-metadata.yaml"
 
 File.open(metadata_file_path, "w") do |f|
-  f.write metadata.to_yaml
+  f.write(metadata.to_yaml(line_width: -1))
 end
 
 if File.exist?(metadata_file_path)
