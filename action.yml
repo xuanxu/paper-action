@@ -48,10 +48,6 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Install development tools
-      shell: bash
-      run: |
-        apt-get install libicu-dev
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
