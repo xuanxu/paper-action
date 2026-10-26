@@ -49,6 +49,7 @@ runs:
   using: "composite"
   steps:
     - name: Install development tools
+      shell: bash
       run: |
         apt-get install libicu-dev
     - name: Install Ruby
